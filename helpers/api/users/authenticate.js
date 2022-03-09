@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 import getConfig from 'next/config';
 
-import { apiHandler } from 'helpers/api';
+import { apiHandler } from 'helpers/api/api-handler';
 
 const { serverRuntimeConfig } = getConfig();
 
 // users in JSON file for simplicity, store in a db for production applications
-const users = require('data/users.json');
+const users = require('../../../data/users.json');
 
 export default apiHandler(handler);
 

@@ -34,10 +34,11 @@ function Login() {
             .then(() => {
                 // get return url from query parameters or default to '/'
                 const returnUrl = router.query.returnUrl || '/';
-                router.push(returnUrl);
+                console.log(returnUrl);
+                // router.push(returnUrl);
             })
             .catch(error => {
-                setError('apiError', { message: error });
+                // setError('apiError', { message: error });
             });
     }
 
