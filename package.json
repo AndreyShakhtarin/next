@@ -9,9 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.7.0",
+    "@hookform/resolvers": "^2.8.8",
+    "express-jwt": "^6.1.1",
+    "iron-session": "^6.0.5",
+    "jsonwebtoken": "^8.5.1",
     "next": "12.1.0",
+    "prop-types": "^15.8.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.27.1",
+    "rxjs": "^7.5.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
