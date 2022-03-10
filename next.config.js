@@ -10,10 +10,7 @@ module.exports = {
   },
   async rewrites() {
     return {
-
       fallback: [
-        // These rewrites are checked after both pages/public files
-        // and dynamic routes are checked
         {
           source: '/:path*',
           destination: `http://localhost/:path*`,
@@ -23,7 +20,7 @@ module.exports = {
   },
   publicRuntimeConfig: {
     apiUrl: process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/api' // development api
-        : 'http://localhost:3000/api' // production api
+        ? 'http://localhost:3000' // development api
+        : 'http://localhost:3000' // production api
   }
 }

@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 export default function Navbar() {
+    // let currentUser = localStorage.getItem('user');
+
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

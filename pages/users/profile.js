@@ -6,12 +6,12 @@ const Profile = () => {
     // Fetch the user client-side
     const { user, error, isLoading } = useUser( );
     const router = useRouter();
-    console.log(user);
+    console.log(user, error, isLoading);
     // Server-render loading state
     if (!user || user.isLoggedIn === false) {
-        useEffect(() => {
-            router.push("/login");
-        })
+        // useEffect(() => {
+        //     router.push("/login");
+        // })
     }
 
     // Once the user request finishes, show the user

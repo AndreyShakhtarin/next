@@ -6,8 +6,9 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
+    console.log();
   return (
-      <UserProvider>
+      <UserProvider profileUrl={'/api/current'}  >
           <Layout>
             <Component {...pageProps} />
           </Layout>

@@ -20,9 +20,13 @@ function get(url) {
 }
 
 function post(url, body) {
+
+    let csrf = RegExp('XSRF-TOKEN[^;]+').exec(document.cookie)
+    csrf = decodeURIComponent(csrf ? csrf.toString().replace(/^[^=]+./, '') : '')
+
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...authHeader(url) },
+        headers: { 'Content-Type': 'application/json', "Accept" : "application/json", 'X-XSRF-TOKEN' : csrf, ...authHeader(url) },
         credentials: 'include',
         body: JSON.stringify(body)
     };
@@ -33,7 +37,7 @@ function post(url, body) {
 function put(url, body) {
     const requestOptions = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', ...authHeader(url) },
+        headers: { 'Content-Type': 'application/json', "Accept" : "application/json", ...authHeader(url) },
         body: JSON.stringify(body)
     };
     return fetch(url, requestOptions).then(handleResponse);
@@ -48,18 +52,18 @@ function _delete(url) {
     return fetch(url, requestOptions).then(handleResponse);
 }
 
-// helper functions
-
 function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
     const user = userService.userValue;
     const isLoggedIn = user && user.token;
     const isApiUrl = url.startsWith(publicRuntimeConfig.apiUrl);
+    const headersRequest = {};
+
     if (isLoggedIn && isApiUrl) {
-        return { Authorization: `Bearer ${user.token}` };
-    } else {
-        return {};
+        headersRequest['Authorization'] = `Bearer ${user.token}`
     }
+
+    return headersRequest;
 }
 
 function handleResponse(response) {
